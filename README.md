@@ -1,40 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🎥 Face Tracker – Next.js Coding Challenge
 
-## Getting Started
+**Live Demo:** [https://face-tracker-theta.vercel.app/](https://face-tracker-theta.vercel.app/)
 
-First, run the development server:
+---
 
+## 🚀 Project Overview
+This project is a **Face Tracking Application** built with **Next.js**. It integrates an open-source face tracking API and includes a **video recording feature** where the tracking marker remains visible throughout the recording. The recorded videos are stored locally using the **MediaRecorder API** and **localStorage**.
+
+---
+
+## 📝 Challenge Details
+**Duration:** 24 Hours  
+**Difficulty Level:** Medium  
+
+### **Problem Statement**
+Build a **Face Tracking Application** with video recording functionality. Users can record videos with a live face tracking marker, and the recorded videos can be saved locally for playback.
+
+---
+
+## 🎯 Features
+- **Face Tracking:** Integrated open-source API for real-time face tracking.
+- **Video Recording:**  
+  - Start and stop video recording with a single click.  
+  - Face tracking marker is visible in the recorded video.  
+- **Video Saving:** Save recorded videos locally using **localStorage**.
+- **Responsive Design:** Fully optimized for both **desktop** and **mobile devices**.
+- **Modern UI:** Clean and user-friendly interface using **Tailwind CSS**.
+
+---
+
+## ⚙️ Tech Stack
+- **Framework:** [Next.js](https://nextjs.org/)
+- **Face Tracking API:** Open-source API (customizable).
+- **Video Recording:** [MediaRecorder API](https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder)
+- **Styling:** Tailwind CSS / CSS Modules.
+- **Storage:** LocalStorage for video persistence.
+
+---
+
+## 📂 Project Structure
+.
+├── components/ # Reusable UI components
+├── pages/ # Next.js pages
+├── public/ # Static assets
+├── styles/ # Tailwind and global CSS
+├── utils/ # Helper functions
+└── README.md # Project documentation
+
+
+---
+
+## 🚦 Getting Started
+
+### **1. Clone the Repository**
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+git clone https://github.com/<your-username>/face-tracker.git
+cd face-tracker
