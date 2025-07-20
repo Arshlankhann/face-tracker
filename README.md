@@ -9,14 +9,6 @@ This project is a **Face Tracking Application** built with **Next.js**. It integ
 
 ---
 
-## 📝 Challenge Details
-**Duration:** 24 Hours  
-**Difficulty Level:** Medium  
-
-### **Problem Statement**
-Build a **Face Tracking Application** with video recording functionality. Users can record videos with a live face tracking marker, and the recorded videos can be saved locally for playback.
-
----
 
 ## 🎯 Features
 - **Face Tracking:** Integrated open-source API for real-time face tracking.
@@ -39,7 +31,6 @@ Build a **Face Tracking Application** with video recording functionality. Users 
 ---
 
 ## 📂 Project Structure
-.
 ├── components/ # Reusable UI components
 ├── pages/ # Next.js pages
 ├── public/ # Static assets
@@ -47,12 +38,13 @@ Build a **Face Tracking Application** with video recording functionality. Users 
 ├── utils/ # Helper functions
 └── README.md # Project documentation
 
-
 ---
 
 ## 🚦 Getting Started
 
-### **1. Clone the Repository**
+### **. Clone the Repository**
 ```bash
 git clone https://github.com/<your-username>/face-tracker.git
 cd face-tracker
+```
+---
