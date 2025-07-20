@@ -73,35 +73,40 @@ export default function FaceTracker() {
     }
   };
 
+  // --- FIX: Unified and Synchronized Drawing Loop ---
   const drawLoop = useCallback(async () => {
+    // Stop the loop if components aren't ready
     if (!videoRef.current || !canvasRef.current || !faceApi || videoRef.current.paused || videoRef.current.ended) {
       animationFrameId.current = requestAnimationFrame(drawLoop);
       return;
     }
 
+    // 1. Detect faces in the current video frame
+    const detections = await faceApi.detectAllFaces(videoRef.current, new faceApi.TinyFaceDetectorOptions()).withFaceLandmarks();
+    
     const video = videoRef.current;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const displaySize = { width: video.clientWidth, height: video.clientHeight };
+    
+    faceApi.matchDimensions(canvas, displaySize);
 
-    if (canvas.width !== displaySize.width || canvas.height !== displaySize.height) {
-      faceApi.matchDimensions(canvas, displaySize);
-    }
-
+    // 2. Draw the video frame onto the canvas
     ctx.drawImage(video, 0, 0, displaySize.width, displaySize.height);
 
-    const detections = await faceApi.detectAllFaces(video, new faceApi.TinyFaceDetectorOptions()).withFaceLandmarks();
+    // 3. Resize and draw the detection boxes on top of the video frame
     const resizedDetections = faceApi.resizeResults(detections, displaySize);
-
     resizedDetections.forEach(detection => {
       const box = detection.detection.box;
       ctx.strokeStyle = '#007bff';
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 3;
       ctx.strokeRect(box.x, box.y, box.width, box.height);
     });
 
+    // 4. Request the next frame to continue the loop
     animationFrameId.current = requestAnimationFrame(drawLoop);
   }, [faceApi, isReady]);
+
 
   const handleVideoPlay = () => {
     if (isReady) {
@@ -189,6 +194,7 @@ export default function FaceTracker() {
                 <p>{error}</p>
               </div>
             )}
+            
             <video
               ref={videoRef}
               autoPlay
@@ -239,6 +245,7 @@ export default function FaceTracker() {
         </main>
         
         <footer className={styles.appFooter}>
+          <p>Powered by Next.js & face-api.js</p>
         </footer>
       </div>
     </div>
