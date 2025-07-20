@@ -239,7 +239,6 @@ export default function FaceTracker() {
         </main>
         
         <footer className={styles.appFooter}>
-          <p>Powered by Next.js & face-api.js</p>
         </footer>
       </div>
     </div>
