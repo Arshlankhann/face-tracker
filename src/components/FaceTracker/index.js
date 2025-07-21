@@ -73,15 +73,12 @@ export default function FaceTracker() {
     }
   };
 
-  // --- FIX: Unified and Synchronized Drawing Loop ---
   const drawLoop = useCallback(async () => {
-    // Stop the loop if components aren't ready
     if (!videoRef.current || !canvasRef.current || !faceApi || videoRef.current.paused || videoRef.current.ended) {
       animationFrameId.current = requestAnimationFrame(drawLoop);
       return;
     }
 
-    // 1. Detect faces in the current video frame
     const detections = await faceApi.detectAllFaces(videoRef.current, new faceApi.TinyFaceDetectorOptions()).withFaceLandmarks();
     
     const video = videoRef.current;
@@ -91,10 +88,8 @@ export default function FaceTracker() {
     
     faceApi.matchDimensions(canvas, displaySize);
 
-    // 2. Draw the video frame onto the canvas
     ctx.drawImage(video, 0, 0, displaySize.width, displaySize.height);
 
-    // 3. Resize and draw the detection boxes on top of the video frame
     const resizedDetections = faceApi.resizeResults(detections, displaySize);
     resizedDetections.forEach(detection => {
       const box = detection.detection.box;
@@ -103,7 +98,6 @@ export default function FaceTracker() {
       ctx.strokeRect(box.x, box.y, box.width, box.height);
     });
 
-    // 4. Request the next frame to continue the loop
     animationFrameId.current = requestAnimationFrame(drawLoop);
   }, [faceApi, isReady]);
 
@@ -177,7 +171,6 @@ export default function FaceTracker() {
       <div className={styles.appWrapper}>
         <header className={styles.appHeader}>
           <h1>Face Tracking Recorder</h1>
-          <p>Record video with a face-tracking overlay.</p>
         </header>
 
         <main className={styles.mainContent}>
@@ -245,7 +238,6 @@ export default function FaceTracker() {
         </main>
         
         <footer className={styles.appFooter}>
-          <p>Powered by Next.js & face-api.js</p>
         </footer>
       </div>
     </div>
